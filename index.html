@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="referrer" content="no-referrer-when-downgrade" />
+  <title>Opening…</title>
+
+  <!-- Optional: helps with caching behaviour on some webviews -->
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
+  <meta http-equiv="Pragma" content="no-cache" />
+
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; }
+    .wrap { min-height: 100vh; display:flex; align-items:center; justify-content:center; padding: 24px; }
+    .card { max-width: 520px; width: 100%; border: 1px solid #e5e5e5; border-radius: 14px; padding: 18px; }
+    h1 { font-size: 18px; margin: 0 0 10px; }
+    p { margin: 0 0 14px; line-height: 1.4; color: #333; }
+    button {
+      width: 100%;
+      border: 0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Opening the store…</h1>
+      <p>If nothing happens, tap the button below.</p>
+      <button id="go">Continue</button>
+    </div>
+  </div>
+
+  <script>
+    // Your Everflow tracking link
+    const TRACKING_URL = "https://www.kaoh7u3o.com/N2W6N/2KF8JF/";
+
+    // Try auto-redirect quickly (works in many webviews / browsers)
+    function autoRedirect() {
+      // replace() avoids adding this page to browser history (nicer UX)
+      window.location.replace(TRACKING_URL);
+    }
+
+    // Fallback: user gesture (more reliable if auto-redirect is blocked)
+    function userRedirect() {
+      window.location.href = TRACKING_URL;
+    }
+
+    // Attempt auto redirect shortly after load
+    setTimeout(autoRedirect, 50);
+
+    // Button fallback
+    document.getElementById("go").addEventListener("click", userRedirect);
+
+    // Extra fallback: if user comes back to this page, show button remains usable
+    document.addEventListener("visibilitychange", () => {
+      // no-op; you could add analytics here if you want
+    });
+  </script>
+</body>
+</html>
+
