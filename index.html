@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="referrer" content="no-referrer-when-downgrade" />
-  <title>Opening…</title>
+  <title>Continue to Offer</title>
 
   <!-- Optional: helps with caching behaviour on some webviews -->
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0" />
@@ -56,33 +56,25 @@
 </head>
 
 <body>
-
+  <div class="wrap">
+    <div class="card">
+      <h1>Ready to Continue?</h1>
+      <p>Click the button below to proceed to your offer.</p>
+      <button id="go">Continue</button>
+    </div>
+  </div>
 
   <script>
     // Your Everflow tracking link
     const TRACKING_URL = "https://www.kaoh7u3o.com/N2W6N/2KF8JF/";
 
-    // Try auto-redirect quickly (works in many webviews / browsers)
-    function autoRedirect() {
-      // replace() avoids adding this page to browser history (nicer UX)
-      window.location.replace(TRACKING_URL);
-    }
-
-    // Fallback: user gesture (more reliable if auto-redirect is blocked)
-    function userRedirect() {
+    // Redirect when button is clicked
+    function redirectToOffer() {
       window.location.href = TRACKING_URL;
     }
 
-    // Attempt auto redirect shortly after load
-    setTimeout(autoRedirect, 50);
-
-    // Button fallback
-    document.getElementById("go").addEventListener("click", userRedirect);
-
-    // Extra fallback: if user comes back to this page, show button remains usable
-    document.addEventListener("visibilitychange", () => {
-      // no-op; you could add analytics here if you want
-    });
+    // Attach click handler to button
+    document.getElementById("go").addEventListener("click", redirectToOffer);
   </script>
 </body>
 
