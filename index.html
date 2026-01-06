@@ -15,6 +15,7 @@
     body {
       font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
       margin: 0;
+      background-color: #f5f5f7;
     }
 
     .wrap {
@@ -51,6 +52,31 @@
       padding: 14px 16px;
       font-size: 16px;
       cursor: pointer;
+      background-color: #007aff;
+      color: white;
+      font-weight: 500;
+    }
+
+    button:hover {
+      background-color: #0051d5;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+
+    .button-group button {
+      flex: 1;
+    }
+
+    .close-btn {
+      background-color: #e5e5e5;
+      color: #333;
+    }
+
+    .close-btn:hover {
+      background-color: #d1d1d1;
     }
   </style>
 </head>
@@ -60,7 +86,10 @@
     <div class="card">
       <h1>Ready to Continue?</h1>
       <p>Click the button below to proceed to your offer.</p>
-      <button id="go">Continue</button>
+      <div class="button-group">
+        <button id="close" class="close-btn">Close</button>
+        <button id="go">Continue</button>
+      </div>
     </div>
   </div>
 
@@ -73,8 +102,15 @@
       window.location.href = TRACKING_URL;
     }
 
-    // Attach click handler to button
+    // Close function for Unity
+    function closeWindow() {
+      const payload = { type: 'close' };
+      window.postMessageToUnity(payload);
+    }
+
+    // Attach click handlers
     document.getElementById("go").addEventListener("click", redirectToOffer);
+    document.getElementById("close").addEventListener("click", closeWindow);
   </script>
 </body>
 
