@@ -102,10 +102,44 @@
       window.location.href = TRACKING_URL;
     }
 
-    // Close function for Unity
+    // Detect platform
+    function detectPlatform() {
+      const userAgent = navigator.userAgent.toLowerCase();
+      if (/android/.test(userAgent)) {
+        return 'android';
+      } else if (/iphone|ipad|ipod/.test(userAgent)) {
+        return 'ios';
+      } else if (/mac/.test(userAgent)) {
+        return 'mac';
+      } else if (/win/.test(userAgent)) {
+        return 'windows';
+      }
+      return 'unknown';
+    }
+
+    // Close function with platform detection
     function closeWindow() {
       const payload = { type: 'close' };
-      window.postMessageToUnity(payload);
+      const messageString = JSON.stringify(payload);
+      const platform = detectPlatform();
+
+      if (platform === 'android') {
+        if (window.AndroidInterface && typeof window.AndroidInterface.postMessage === 'function') {
+          window.AndroidInterface.postMessage(messageString);
+        } else {
+          console.error('Failed to post Android Message');
+        }
+      } else if (platform === 'windows' || platform === 'mac') {
+        if (typeof window.postMessageToUnity === 'function') {
+          window.postMessageToUnity(messageString);
+        }
+      } else {
+        try {
+          window?.webkit?.messageHandlers?.iOSInterface?.postMessage(messageString);
+        } catch (err) {
+          console.error('Failed to post IOS Message');
+        }
+      }
     }
 
     // Attach click handlers
