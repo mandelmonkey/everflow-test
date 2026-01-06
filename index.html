@@ -79,6 +79,15 @@
       background-color: #d1d1d1;
     }
 
+    .zbd-btn {
+      background-color: #00c853;
+      color: white;
+    }
+
+    .zbd-btn:hover {
+      background-color: #00a844;
+    }
+
     .version {
       position: fixed;
       bottom: 10px;
@@ -97,20 +106,27 @@
       <p>Click the button below to proceed to your offer.</p>
       <div class="button-group">
         <button id="close" class="close-btn">Close</button>
+        <button id="zbd" class="zbd-btn">Open ZBD</button>
         <button id="go">Continue</button>
       </div>
     </div>
   </div>
 
-  <div class="version">v1.0.0</div>
+  <div class="version">v1.1.0</div>
 
   <script>
     // Your Everflow tracking link
-    const TRACKING_URL = "https://www.kaoh7u3o.com/N2W6N/2KF8JF/";
+    const TRACKING_URL = "https://www.kaoh7u3o.com/4RQSJ/23JF6C/?appId=fumb.bitcoin.blocks&rewardsUserId=361ffb21-6817-4433-9042-a0ba6a261a8f&sub4=361ffb21-6817-4433-9042-a0ba6a261a8f&sub5=fumb.bitcoin.blocks";
+
 
     // Redirect when button is clicked
     function redirectToOffer() {
       window.location.href = TRACKING_URL;
+    }
+
+    // Open ZBD app
+    function openZBD() {
+      window.location.href = "zbd://";
     }
 
     // Detect platform
@@ -155,6 +171,7 @@
 
     // Attach click handlers
     document.getElementById("go").addEventListener("click", redirectToOffer);
+    document.getElementById("zbd").addEventListener("click", openZBD);
     document.getElementById("close").addEventListener("click", closeWindow);
   </script>
 </body>
