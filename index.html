@@ -96,6 +96,15 @@
       color: #999;
       font-family: monospace;
     }
+
+    .load-time {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      font-size: 12px;
+      color: #999;
+      font-family: monospace;
+    }
   </style>
 </head>
 
@@ -113,8 +122,22 @@
   </div>
 
   <div class="version">v1.1.0</div>
+  <div class="load-time" id="loadTime"></div>
 
   <script>
+    // Display load time with second granularity
+    const loadTime = new Date();
+    const timeString = loadTime.toLocaleString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+    document.getElementById('loadTime').textContent = `Loaded: ${timeString}`;
+
     // Your Everflow tracking link
     const TRACKING_URL = "https://www.kaoh7u3o.com/4RQSJ/23JF6C/?appId=fumb.bitcoin.blocks&rewardsUserId=361ffb21-6817-4433-9042-a0ba6a261a8f&sub4=361ffb21-6817-4433-9042-a0ba6a261a8f&sub5=fumb.bitcoin.blocks";
 
