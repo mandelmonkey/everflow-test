@@ -116,11 +116,12 @@
       <div class="button-group">
         <button id="close" class="close-btn">Close</button>
         <button id="go">Continue</button>
+        <button id="gonew">Continue new</button>
       </div>
     </div>
   </div>
 
-  <div class="version">v1.1.4</div>
+  <div class="version">v1.1.5</div>
   <div class="load-time" id="loadTime"></div>
 
   <script>
@@ -196,6 +197,8 @@
 
     // Attach click handlers
     document.getElementById("go").addEventListener("click", redirectToOffer);
+
+    document.getElementById("gonew").addEventListener("click", redirectToOffer2);
     document.getElementById("close").addEventListener("click", closeWindow);
   </script>
 </body>
